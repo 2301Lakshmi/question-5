@@ -14,8 +14,8 @@ df = pd.DataFrame({"Category": categories, "Satisfaction": scores})
 sns.set_style("whitegrid")
 sns.set_context("talk")
 
-# Create barplot (512x512 px output)
-plt.figure(figsize=(8, 8))  # 8x8 inches × 64 dpi = 512×512 px
+# Create barplot (must be exactly 512x512 px)
+plt.figure(figsize=(8, 8))  # 8 inches × 64 dpi = 512 pixels
 sns.barplot(data=df, x="Category", y="Satisfaction", palette="viridis")
 
 plt.title("Average Customer Satisfaction by Product Category")
@@ -25,5 +25,7 @@ plt.xticks(rotation=20)
 
 plt.tight_layout()
 
-# Export PNG
-plt.savefig('chart.png', dpi=64, bbox_inches='tight')
+# Save EXACT 512x512 px image
+plt.savefig("chart.png", dpi=64)   # IMPORTANT: no bbox_inches='tight'
+plt.close()
+
